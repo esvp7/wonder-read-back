@@ -9,7 +9,10 @@ import db from "./db/index.js";
 const app = express();
 
 //MIDDLEWARE
-app.use(cors());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 app.use(express.json());
 
 //PORT LISTEN
